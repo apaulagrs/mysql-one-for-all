@@ -2,11 +2,15 @@ DROP DATABASE IF EXISTS SpotifyClone;
 
 CREATE DATABASE IF NOT EXISTS SpotifyClone;
 
-
 CREATE TABLE SpotifyClone.plano(
     plano_id INT PRIMARY KEY AUTO_INCREMENT,
     tipo VARCHAR(20) NOT NULL,
     preco DECIMAL(5,2) NOT NULL
+) engine = InnoDB;
+
+CREATE TABLE SpotifyClone.artista(
+    artista_id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE SpotifyClone.usuario(
@@ -16,11 +20,6 @@ CREATE TABLE SpotifyClone.usuario(
     plano_id INT NOT NULL,
     data_assinatura DATE NOT NULL,
     FOREIGN KEY (plano_id) REFERENCES SpotifyClone.plano(plano_id)
-) engine = InnoDB;
-
-CREATE TABLE SpotifyClone.artista(
-    artista_id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE SpotifyClone.album(
@@ -56,6 +55,22 @@ CREATE TABLE SpotifyClone.usuario_segue(
     CONSTRAINT PRIMARY KEY (usuario_id, artista_id)
 ) engine = InnoDB;
 
+INSERT INTO SpotifyClone.plano (tipo, preco)
+VALUES
+  ('gratuito', 0),
+  ('familiar', 7.99),
+  ('universitário', 5.99),
+  ('pessoal', 6.99);
+
+INSERT INTO SpotifyClone.artista (nome)
+VALUES
+  ('Beyoncé'),
+  ('Queen'),
+  ('Elis Regina'),
+  ('Baco Exu do Blues'),
+  ('Blind Guardian'),
+  ('Nina Simone');
+
 INSERT INTO SpotifyClone.usuario (nome, idade, plano_id, data_assinatura)
 VALUES
   ('Barbara Liskov', 82, 1, '2019-10-20'),
@@ -68,15 +83,6 @@ VALUES
   ('Christopher Alexander', 85, 4, '2019-06-05'),
   ('Judith Butler', 45, 4, '2020-05-13'),
   ('Jorge Amado', 58, 4, '2017-02-17');
-
-INSERT INTO SpotifyClone.artista (nome)
-VALUES
-  ('Beyoncé'),
-  ('Queen'),
-  ('Elis Regina'),
-  ('Baco Exu do Blues'),
-  ('Blind Guardian'),
-  ('Nina Simone');
 
 INSERT INTO SpotifyClone.album (nome, artista_id, ano_lancamento)
 VALUES
@@ -101,13 +107,6 @@ VALUES
   ('Samba em Paris', 6, 267),
   ("The Bard's Song", 7, 244),
   ('Feeling Good', 8, 100);
-
-INSERT INTO SpotifyClone.plano (tipo, preco)
-VALUES
-  ('gratuito', 0),
-  ('familiar', 7.99),
-  ('universitário', 5.99),
-  ('pessoal', 6.99);
 
 INSERT INTO SpotifyClone.historico (usuario_id, cancao_id, data_visualizacao)
 VALUES
