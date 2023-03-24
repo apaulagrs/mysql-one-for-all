@@ -13,8 +13,9 @@ CREATE TABLE SpotifyClone.usuario(
     pessoa_usuaria_id INT PRIMARY KEY AUTO_INCREMENT,
     nome_pessoa_usuaria VARCHAR(50) NOT NULL,
     idade INT NOT NULL,
-    plano_id INT NOT NULL,
+    plano_id INT,
     data_assinatura DATE NOT NULL,
+    CONSTRAINT PRIMARY KEY (plano_id),
     FOREIGN KEY (plano_id) REFERENCES SpotifyClone.plano(plano_id)
 ) engine = InnoDB;
 
@@ -26,8 +27,9 @@ CREATE TABLE SpotifyClone.artista(
 CREATE TABLE SpotifyClone.albuns(
     album_id INT PRIMARY KEY AUTO_INCREMENT,
     album VARCHAR(50) NOT NULL,
-    artista_id INT NOT NULL,
-    ano_lancamento INT NOT NULL
+    artista_id INT,
+    ano_lancamento INT NOT NULL,
+    CONSTRAINT PRIMARY KEY (artista_id),
     FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artista(artista_id)
 ) engine = InnoDB;
 
@@ -35,7 +37,8 @@ CREATE TABLE SpotifyClone.cancoes(
     cancoes_id INT PRIMARY KEY AUTO_INCREMENT,
     cancoes VARCHAR(50) NOT NULL,
     duracao_segundos INT NOT NULL,
-    album_id INT NOT NULL,
+    album_id INT,
+    CONSTRAINT PRIMARY KEY (album_id),
     FOREIGN KEY (album_id) REFERENCES SpotifyClone.albuns(album_id)
 ) engine = InnoDB;
 
@@ -43,7 +46,9 @@ CREATE TABLE SpotifyClone.reproducao(
     pessoa_usuaria_id INT,
     cancoes_id INT,
     data_reproducao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT PRIMARY KEY (pessoa_usuaria_id, cancoes_id)
+    CONSTRAINT PRIMARY KEY (pessoa_usuaria_id, cancoes_id),
+    FOREIGN KEY (pessoa_usuaria_id) REFERENCES SpotifyClone.usuario(pessoa_usuaria_id),
+    FOREIGN KEY (cancoes_id) REFERENCES SpotifyClone.cancoes(cancoes_id)
 ) engine = InnoDB;
 
 CREATE TABLE SpotifyClone.artistas_seguidos(
