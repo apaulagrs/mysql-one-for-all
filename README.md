@@ -1,10 +1,34 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+# Mysql One for all
+
+# Contexto
+Planilhas não normalizadas que deverão ser normalizadas e populadas em um banco de dados para que se possa executar queries com o intuito de encontrar as informações solicitadas. 
+
+## Tecnologias utilizadas
+
+> Docker; MySql
+
+
+## Instalando Dependências
+
+```bash
+npm install
+``` 
+
+## Executando aplicação com Docker:
+
+```bash
+ docker-compose up -d
+```
+*Acesse o terminal interativo do contaner criado acima:
+
+```bash
+docker exec -it one_for_all bash
+```
+
+## TRYBE
+Este projeto foi desenvolvido enquanto estudante de Desenvolvimento Web na <a href="https://www.betrybe.com/">Trybe</a>!
+
+
+Tarefas desenvolvidos/alterados por mim:
+
+/challenges
