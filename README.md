@@ -19,7 +19,7 @@ npm install
 ```bash
  docker-compose up -d
 ```
-* Acesse o terminal interativo do contaner criado acima:
+* Acesse o terminal interativo do container criado acima:
 
 ```bash
 docker exec -it one_for_all bash
